@@ -1,12 +1,11 @@
-import { Modal, Paper } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Modal from "./components/shared/Modal";
 
 const App = () => {
   const [fruits, setFruits] = useState([]);
-  /*const [cart, setCart] = useState([]);*/
   const [isOpenFruitModal, setIsOpenFruitModal] = useState(false);
-
+  const [selectedFruit, setSelectedFruit] = useState();
   const fetchFruits = async () => {
     try {
       const { data } = await axios.get("http://localhost:3003/fruits");
@@ -15,7 +14,6 @@ const App = () => {
       console.log("Error", error);
     }
   };
-  /*const handleAddFruit = (fruit) => {};*/
 
   useEffect(() => {
     fetchFruits();
@@ -26,7 +24,7 @@ const App = () => {
       <header>
         <div> Frutex </div>
         <input />
-        <button> cesta</button>
+        <button> Cart</button>
         <div>login</div>
         <div>sing-up</div>
       </header>
@@ -39,24 +37,22 @@ const App = () => {
                 <button
                   onClick={() => {
                     setIsOpenFruitModal(true);
+                    setSelectedFruit(fruit);
                   }}
                 >
-                  Adicionar
+                  add to cart
                 </button>
-                <Modal
-                  open={isOpenFruitModal}
-                  onClose={() => {
-                    setIsOpenFruitModal(false);
-                  }}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Paper></Paper>
-                </Modal>
               </div>
             );
           })}
         </ul>
+        <Modal
+          fruit={selectedFruit}
+          handleClose={() => {
+            setIsOpenFruitModal(false);
+          }}
+          isOpen={isOpenFruitModal}
+        />
       </main>
       <footer> Frutex </footer>
     </>
