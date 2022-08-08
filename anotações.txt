@@ -4,4 +4,6 @@
 - fazer a estilização
 - fazer os commits
 - entregar até terça-feira
+- instalar o pacote,criar a routes
+- criar o componete de carrinho
 - link https://vagas.frexco.com.br/candidates/emails/GRJ1OSBLQ6LC8H09A92ssg/forms/new?locale=pt

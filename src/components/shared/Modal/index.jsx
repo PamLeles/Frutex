@@ -1,17 +1,26 @@
 import { Modal as MuiModal, Paper } from "@mui/material";
-import { useContext, useState } from "react";
-import CartContext from "../../../contexts/CartContext/context";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const Modal = ({ isOpen, handleClose, fruit }) => {
+const Modal = ({
+  isOpen,
+  handleConfirm,
+  handleClose,
+  fruit,
+  initialQuantity = 1,
+}) => {
   const [quantity, setQuantity] = useState(1);
 
-  const { addFruitToCart } = useContext(CartContext); // Carrinho
-
-  function handleConfirm(fruit, quantity) {
-    addFruitToCart(fruit, quantity);
-    setQuantity(1);
-    handleClose();
+  function handleDecreaseQuantity() {
+    if (quantity === 0) {
+      return;
+    }
+    setQuantity(quantity - 1);
   }
+
+  useEffect(() => {
+    setQuantity(initialQuantity);
+  }, [initialQuantity]);
 
   return (
     <MuiModal open={isOpen} onClose={handleClose}>
@@ -19,8 +28,15 @@ const Modal = ({ isOpen, handleClose, fruit }) => {
         <div>{fruit?.name}</div>
         <button onClick={() => setQuantity(quantity + 1)}>+</button>
         <p>{quantity}</p>
-        <button onClick={() => setQuantity(quantity - 1)}>-</button>
-        <button onClick={() => handleConfirm(fruit, quantity)}>Confirm</button>
+        <button onClick={handleDecreaseQuantity}>-</button>
+        <button
+          onClick={() => {
+            handleConfirm(fruit, quantity);
+            setQuantity(1);
+          }}
+        >
+          {quantity === 0 ? "Remove" : "Confirm"}
+        </button>
       </Paper>
     </MuiModal>
   );

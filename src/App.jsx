@@ -1,11 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Modal from "./components/shared/Modal";
+import CartContext from "./contexts/CartContext/context";
 
 const App = () => {
   const [fruits, setFruits] = useState([]);
   const [isOpenFruitModal, setIsOpenFruitModal] = useState(false);
   const [selectedFruit, setSelectedFruit] = useState();
+
+  const { addFruitToCart } = useContext(CartContext);
+
   const fetchFruits = async () => {
     try {
       const { data } = await axios.get("http://localhost:3003/fruits");
@@ -14,6 +19,11 @@ const App = () => {
       console.log("Error", error);
     }
   };
+
+  function handleConfirm(fruit, quantity) {
+    addFruitToCart(fruit, quantity);
+    setIsOpenFruitModal(false);
+  }
 
   useEffect(() => {
     fetchFruits();
@@ -24,7 +34,7 @@ const App = () => {
       <header>
         <div> Frutex </div>
         <input />
-        <button> Cart</button>
+        <Link to="/cart"> Cart </Link>
         <div>login</div>
         <div>sing-up</div>
       </header>
@@ -48,10 +58,9 @@ const App = () => {
         </ul>
         <Modal
           fruit={selectedFruit}
-          handleClose={() => {
-            setIsOpenFruitModal(false);
-          }}
           isOpen={isOpenFruitModal}
+          handleConfirm={handleConfirm}
+          handleClose={() => setIsOpenFruitModal(false)}
         />
       </main>
       <footer> Frutex </footer>
