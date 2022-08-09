@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+  background-color: red;
+  color: white;
+  font-size: 25px;
+  font-weight: 200;
+  height: 61px;
+  text-align: center;
+  align-items: center;
+}
+.cart {
+  text-decoration-line: none;
+  color: white;
+}
+.button-header {
+  border: none;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  background-color: transparent;
+  box-shadow: 3px -2px 12px rgb(249 246 246 / 61%);
+  cursor: pointer;
+  transition: opacity 0.3s linear;
+}
+.button-header:hover {
+  opacity: 0.8;
+}
+
+.button-header > svg {
+  fill: #fffefe;
+  height: 40px;
+}

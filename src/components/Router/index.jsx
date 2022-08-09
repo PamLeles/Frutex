@@ -1,13 +1,13 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import App from "../../App";
 import Cart from "../pages/Cart";
+import Home from "../pages/Home";
 
 const Router = () => (
   <>
     <BrowserRouter>
       <Routes>
         <Route path="/cart" element={<Cart />} />
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   </>

@@ -1,0 +1,24 @@
+.cards-fruit {
+  background-color: #fff;
+  border: 1px solid #afafaf;
+  border-radius: 5px 15px 5px 15px;
+  height: 70px;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+
+.button > svg {
+  fill: rgba(131, 8, 8, 0.952);
+  width: 55px;
+}
+
+.fruits-icon {
+  width: 70px;
+  object-fit: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
