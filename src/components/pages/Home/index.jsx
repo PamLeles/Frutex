@@ -54,7 +54,7 @@ const Home = () => {
           handleClose={() => setIsOpenFruitModal(false)}
         />
       </main>
-      <footer> Frutex </footer>
+      <footer className="footer"> Frutex - Delivery </footer>
     </>
   );
 };

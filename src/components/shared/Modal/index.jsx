@@ -1,6 +1,7 @@
 import { Modal as MuiModal, Paper } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
+import "./styles.css";
 
 const Modal = ({
   isOpen,
@@ -23,13 +24,22 @@ const Modal = ({
   }, [initialQuantity]);
 
   return (
-    <MuiModal open={isOpen} onClose={handleClose}>
-      <Paper>
+    <MuiModal open={isOpen} onClose={handleClose} className="modal">
+      <Paper className="div-modal">
         <div>{fruit?.name}</div>
-        <button onClick={() => setQuantity(quantity + 1)}>+</button>
-        <p>{quantity}</p>
-        <button onClick={handleDecreaseQuantity}>-</button>
+
         <button
+          className="modal-button"
+          onClick={() => setQuantity(quantity + 1)}
+        >
+          +
+        </button>
+        <p>{quantity}</p>
+        <button className="modal-button" onClick={handleDecreaseQuantity}>
+          -
+        </button>
+        <button
+          className="modal-confirm"
           onClick={() => {
             handleConfirm(fruit, quantity);
             setQuantity(1);

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 .header {
   display: flex;
   padding: 5px;
@@ -9,6 +10,19 @@
   height: 61px;
   text-align: center;
   align-items: center;
+}
+.header-logo {
+  font-family: "Lobster", cursive;
+  font-size: 50px;
+  font-weight: 200;
+}
+.logo-icon {
+  width: 53px;
+  object-fit: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 5px -1px 6px 5px coral;
+  border-radius: 50%;
 }
 .cart {
   text-decoration-line: none;
