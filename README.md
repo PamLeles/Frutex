@@ -46,7 +46,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ---
 
 ## 💻 Layout
-(<https://github.com/PamLeles/Frutex/blob/main/src/assets/img/miniatura-homepage.png>)
+[miniatura da página](<https://github.com/PamLeles/Frutex/blob/main/src/assets/img/miniatura-homepage.png>)
 
 ## 📰 Licença
 
